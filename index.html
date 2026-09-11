@@ -52,7 +52,6 @@ h1{font-family:var(--type);font-weight:400;font-size:clamp(40px,6.4vw,84px);line
 .point{margin-top:14px;font-family:var(--type);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
 .cur{display:inline-block;width:.55em;height:1em;background:var(--amber);vertical-align:-.15em;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
-.stamp{position:absolute;right:clamp(14px,3vw,40px);top:clamp(12px,2vw,24px);border:2px solid var(--red);color:var(--red);font-family:var(--type);font-size:11px;letter-spacing:.2em;padding:5px 8px;transform:rotate(6deg);opacity:.85;text-transform:uppercase}
 /* strip */
 .strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(20px,3vw,34px)}
 .strip div{padding:16px 14px 14px;border-right:1px solid var(--line)}
@@ -105,7 +104,6 @@ tr.card td{white-space:normal;background:#100e0a;padding:14px 10px 16px}
 .cat .f b{font-weight:400;word-break:break-all}
 .cat .f b.ca{color:var(--ember)}
 .cat .pinhead{position:absolute;left:50%;top:-7px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f4e2b0,#8a6a2c);transform:translateX(-50%);box-shadow:0 2px 3px rgba(0,0,0,.5)}
-.cat .st{position:absolute;right:18px;top:14px;border:2px solid var(--red);color:var(--red);font-size:10px;letter-spacing:.2em;padding:5px 8px;transform:rotate(-7deg);text-transform:uppercase}
 .cat .sig{margin-top:12px;padding-top:10px;border-top:1px dashed #cbbfa2;display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#6b5f48}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .acts .key{height:38px;padding:0 16px}
@@ -130,8 +128,7 @@ tr.card td{white-space:normal;background:#100e0a;padding:14px 10px 16px}
   </div>
 
   <header class="drawer"><span class="c3"></span><span class="c4"></span>
-    <div class="stamp">Type specimen</div>
-    <div class="hero">
+        <div class="hero">
       <div class="spec"><canvas id="fly" aria-label="A fly made of dots, pinned under glass"></canvas><div class="glass"></div><div class="pin"></div>
         <div class="label" id="label"><i>Musca domestica</i><small>Muscidae &#183; Linnaeus, 1758</small></div></div>
       <div>
@@ -166,14 +163,12 @@ tr.card td{white-space:normal;background:#100e0a;padding:14px 10px 16px}
   </section>
 
   <section>
-    <div class="h"><h2>Catalogue card</h2><span>Filed by the registry itself</span></div>
-    <div class="cat" id="cat" title="Copy contract"><span class="pinhead"></span><div class="st" id="st">Uncatalogued</div>
+    <div class="h"><h2>Contract</h2><span>Robinhood Chain &#183; Pons</span></div>
+    <div class="cat" id="cat" title="Copy contract"><span class="pinhead"></span>
       <div class="hd"><span>Order <b>Diptera</b></span><span>Collection <b>Robinhood Chain</b></span><span>Cabinet <b>Pons</b></span></div>
       <div class="f">
         <span>Specimen</span><b data-name>Fly Species</b>
         <span>Ticker</span><b data-ticker>$FLYSPEC</b>
-        <span>Neurons</span><b>166,700 &#183; all of them holding</b>
-        <span>Wingspan</span><b>Every species on file</b>
         <span>Catalogue number</span><b class="ca" id="ca">soon</b>
       </div>
       <div class="sig"><span>Pinned at this terminal</span><span id="cp">Tap the card to copy</span></div>
@@ -198,8 +193,8 @@ tr.card td{white-space:normal;background:#100e0a;padding:14px 10px 16px}
   document.querySelectorAll('[data-link="dex"]').forEach(function(a){ a.href = HAS ? window.DEX_HOME + '/' + CA : window.DEX_HOME; a.target = '_blank'; a.rel = 'noopener'; });
   document.querySelectorAll('[data-link="x"]').forEach(function(a){ a.href = S.X_URL || 'https://x.com'; a.target = '_blank'; a.rel = 'noopener'; });
   document.getElementById('upd').textContent = F.totals.updated;
-  var ca = document.getElementById('ca'), cp = document.getElementById('cp'), st = document.getElementById('st');
-  ca.textContent = HAS ? CA : 'soon'; st.textContent = HAS ? 'Catalogued' : 'Uncatalogued';
+  var ca = document.getElementById('ca'), cp = document.getElementById('cp');
+  ca.textContent = HAS ? CA : 'soon';
   document.getElementById('cat').addEventListener('click', function(){ var old = cp.textContent; if(HAS){ if(navigator.clipboard) navigator.clipboard.writeText(CA); cp.textContent = 'Copied'; } else cp.textContent = 'Not pinned yet'; setTimeout(function(){ cp.textContent = old; }, 1300); });
   function n(x){ return x.toLocaleString('en-US'); }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
